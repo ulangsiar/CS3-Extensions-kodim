@@ -5,8 +5,8 @@ import com.lagradost.cloudstream3.plugins.Plugin
 import android.content.Context
 
 @CloudstreamPlugin
-class TestPlugin: Plugin() {
+class PMoviePlugin: Plugin() {
     override fun load(context: Context) {
-        registerMainAPI(TestProvider())
+        registerMainAPI(PMovieProvider())
     }
 }

@@ -8,10 +8,10 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 import org.jsoup.nodes.Element
 
-class TestProvider : MainAPI() {
+class PMovieProvider : MainAPI() {
 
     override var mainUrl = "https://ww79.pencurimovie.autos/"
-    override var name = "Test"
+    override var name = "PMovie"
     override val hasMainPage = true
     override var lang = "en"
     override val supportedTypes = setOf(
