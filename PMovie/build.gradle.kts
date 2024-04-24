@@ -5,7 +5,7 @@ cloudstream {
 
     description = "Contains favourites movies and series"
 
-    authors = listOf("ulangsiar")
+    authors = listOf("kodim")
 
     /**
      * Status int as the following:
