@@ -12,6 +12,5 @@ class LK21Plugin: Plugin() {
         registerMainAPI(LK21Provider())
         registerExtractorAPI(Emturbovid())
         registerExtractorAPI(Furher())
-        registerExtractorAPI(Hownetwork())
     }
 }
