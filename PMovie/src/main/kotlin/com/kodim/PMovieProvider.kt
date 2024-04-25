@@ -20,8 +20,9 @@ class PMovieProvider : MainAPI() {
     )
 
     override val mainPage = mainPageOf(
-        "$mainUrl/movies/" to "Latest Movies",
-        "$mainUrl/series/" to "Latest TV Series",
+        "$mainUrl/movies/page/" to "Latest Movies",
+        "$mainUrl/series/page/" to "Latest TV Series",
+        "$mainUrl/episode/page/" to "Latest Episode",        
     )
 
     override suspend fun getMainPage(
@@ -135,7 +136,7 @@ class PMovieProvider : MainAPI() {
     ): Boolean {
 
         if (data.startsWith(mainUrl)) {
-            app.get(data).document.select("div.movieplay iframe").map { fixUrl(it.attr("src")) }
+            app.get(data).document.select("div.movieplay iframe").map { fixUrl(it.attr("data-src")) }
                 .apmap { source ->
                     safeApiCall {
                         when {
