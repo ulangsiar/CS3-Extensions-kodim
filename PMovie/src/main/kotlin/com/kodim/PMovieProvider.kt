@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element
 
 class PMovieProvider : MainAPI() {
 
-    override var mainUrl = "https://ww79.pencurimovie.autos/"
+    override var mainUrl = base64Decode("aHR0cHM6Ly93dzc5LnBlbmN1cmltb3ZpZS5hdXRvcy8=")
     override var name = "PMovie"
     override val hasMainPage = true
     override var lang = "en"
@@ -45,9 +45,19 @@ class PMovieProvider : MainAPI() {
         val title = this.selectFirst("h2")?.text()?.trim() ?: return null
         val href = fixUrl(this.selectFirst("a")?.attr("href").toString())
         val posterUrl = fixUrlNull(this.selectFirst("img")?.attr("data-original"))
-
-        return newMovieSearchResponse(title, href, TvType.Movie) {
-            this.posterUrl = posterUrl
+        val type = if (this.selectFirst("span.mli-eps") == null) TvType.Movie else TvType.TvSeries
+        return if (type == TvType.TvSeries) {
+            val episode = this.selectFirst("span.mli-eps")?.text()?.filter { it.isDigit() } ?.toIntOrNull()
+            newAnimeSearchResponse(title, href, TvType.TvSeries) {
+                this.posterUrl = posterUrl
+                addSub(episode)
+            }
+        } else {
+            val quality = this.selectFirst("span.mli-quality").text().trim()
+            newMovieSearchResponse(title, href, TvType.Movie) {
+                this.posterUrl = posterUrl
+                addQuality(quality)
+            }           
         }
     }
 
