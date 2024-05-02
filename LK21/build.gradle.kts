@@ -6,7 +6,8 @@ cloudstream {
     language = "id"
     // All of these properties are optional, you can safely remove them
 
-    // description = "Lk21 Nonton Streaming Download Film Box Office Series Drama Korea Mandarin Thailand Sub Indo Dunia21 Terbaru dan Terlengkap HD Bluray WEBDL Layarkaca21 Dunia21"
+    description = "Lk21 Nonton Streaming Download Film Box Office Series Drama Korea Mandarin Thailand Sub Indo Dunia21 Terbaru dan Terlengkap HD Bluray WEBDL Layarkaca21 Dunia21"
+    
     authors = listOf("kodim")
 
     /**
