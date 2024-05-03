@@ -23,11 +23,8 @@ class LK21Provider : MainAPI() {
 
     override val mainPage = mainPageOf(
             "$mainUrl/latest/page/" to "Film Upload Terbaru",        
-            "$mainUrl/populer/page/" to "Film Terplopuler",
-            "$mainUrl/rating/page/" to "Film Berdasarkan IMDb Rating",
-            "$mainUrl/most-commented/page/" to "Film Dengan Komentar Terbanyak",
+            "$mainUrl/populer/page/" to "Film Terpopuler",
             "$seriesUrl/latest-series/page/" to "Series Terbaru",
-            "$seriesUrl/series/asian/page/" to "Drama Asian Terbaru",
     )
 
     override suspend fun getMainPage(
@@ -76,7 +73,7 @@ class LK21Provider : MainAPI() {
     override suspend fun search(query: String): List<SearchResponse> {
         val document = app.get("$mainUrl/search.php?s=$query").document
         return document.select("div.search-item").mapNotNull {
-            val title = it.select("h3")?.attr("a") ?: ""
+            val title = it.select("h3 > a")?.text()?.trim().toString()
             val href = fixUrl(it.selectFirst("a:nth-child(2)")?.attr("href") ?: return@mapNotNull null)
             val posterUrl = fixUrlNull(it.selectFirst("a:nth-child(2) > img")?.attr("src"))
             newTvSeriesSearchResponse(title, href, TvType.TvSeries) {
