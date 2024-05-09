@@ -1,11 +1,12 @@
+
 // use an integer for version numbers
-version = 1
+version = 3
+
 
 cloudstream {
-    language = "en"
     // All of these properties are optional, you can safely remove them
-
-    // description = "Nonton Film Online... Bioskop Online Terlengkap"
+    language = "id"
+    description = "Nonton Film Online... Bioskop Online Terlengkap"
     authors = listOf("kodim")
 
     /**
@@ -15,12 +16,10 @@ cloudstream {
      * 2: Slow
      * 3: Beta only
      * */
-    status = 3 // will be 3 if unspecified
-    tvTypes = listOf(
-        "AsianDrama",
-        "TvSeries",
-        "Movie",
-    )
+    status = 3
 
-    iconUrl = "https://www.google.com/s2/favicons?domain=https://filmapik.gdn/wp-content/uploads/2021/11/newfa.png/&sz=%size%"
+    tvTypes = listOf("TvSeries","Movie")
+
+    iconUrl = "https://filmapik.ngo/wp-content/uploads/2021/11/newfa.png"
 }
+

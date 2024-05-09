@@ -75,7 +75,7 @@ class PMovieProvider : MainAPI() {
         val title = document.selectFirst("div.mvic-desc h3")?.text()?.trim() ?: return null
         val poster = fixUrlNull(document.selectFirst("div.thumb.mvic-thumb img")?.attr("src"))
         val tags = document.select("div.mvici-left p:nth-child(1) a").map { it.text() }
-        val year = document.select("div.mvici-right p:nth-child(3) a").text().trim()
+        val year = document.select("div.mvici-right p:nth-child(3) a").trim()
             .toIntOrNull()
 
         val tvType = if (document.selectFirst("div.les-content")
