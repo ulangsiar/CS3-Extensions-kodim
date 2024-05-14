@@ -53,7 +53,7 @@ class PMovieProvider : MainAPI() {
                 addSub(episode)
             }
         } else {
-            val quality = getQualityFromString(this.selectFirst("span.mli-quality").text().trim())
+            val quality = getQualityFromString(this.selectFirst("span.mli-quality").text().trim().toString())
             newMovieSearchResponse(title, href, TvType.Movie) {
                 this.posterUrl = posterUrl
                 addQuality(quality)
