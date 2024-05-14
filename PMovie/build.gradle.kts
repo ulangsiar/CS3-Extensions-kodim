@@ -3,7 +3,7 @@ version = 1
 cloudstream {
     language = "ms"
 
-    description = "PenCURI Official Website - Free Movie Download and Stream"
+    description = "PenCURI Official Website - Free Movie Download and Stream TEST2"
 
     authors = listOf("kodim")
 
