@@ -54,7 +54,7 @@ class PMovieProvider : MainAPI() {
             }
         } else {
             // output = huruf besar, replace -
-            val quality = getQualityFromString(this.selectFirst("span.mli-quality")?.text()?.trim()?.replace("-", ""))
+            val quality = getQualityFromString(this.selectFirst("span.mli-quality").text().replace("-", ""))
             //val quality = getQualityFromString(this.selectFirst("span.mli-quality").text().toString())
             newMovieSearchResponse(title, href, TvType.Movie) {
                 this.posterUrl = posterUrl
