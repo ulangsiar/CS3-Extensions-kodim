@@ -11,9 +11,9 @@ import org.jsoup.nodes.Element
 class PMovieProvider : MainAPI() {
 
     override var mainUrl = base64Decode("aHR0cHM6Ly93dzc5LnBlbmN1cmltb3ZpZS5hdXRvcy8=")
-    override var name = "PMovie"
+    override var name = "PenCURI"
     override val hasMainPage = true
-    override var lang = "en"
+    override var lang = "ms"
     override val supportedTypes = setOf(
         TvType.Movie,
         TvType.TvSeries

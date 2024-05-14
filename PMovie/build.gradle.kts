@@ -1,9 +1,9 @@
-version = 5
+version = 1
 
 cloudstream {
-    language = "en"
+    language = "ms"
 
-    description = "Contains favourites movies and series"
+    description = "PenCURI Official Website - Free Movie Download and Stream"
 
     authors = listOf("kodim")
 
@@ -14,11 +14,8 @@ cloudstream {
      * 2: Slow
      * 3: Beta only
      * */
-    status = 1 // will be 3 if unspecified
-    tvTypes = listOf(
-        "TvSeries",
-        "Movie",
-    )
+    status = 3 // will be 3 if unspecified
+    tvTypes = listOf("TvSeries", "Movie")
 
     iconUrl = "https://www.google.com/s2/favicons?domain=https://ww79.pencurimovie.autos/&sz=%size%"
 }
