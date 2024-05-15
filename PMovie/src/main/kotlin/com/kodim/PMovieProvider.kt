@@ -54,7 +54,7 @@ class PMovieProvider : MainAPI() {
                 addSub(episode)
             }
         } else {
-            val quality = this.selectFirst("span.mli-quality").text().trim().replace("-", "").replace("Rip", "")
+            val quality = this.selectFirst("span.mli-quality").text().trim().replace("-", "").replace("BrRip", "Bluray")
             newMovieSearchResponse(title, href, TvType.Movie) {
                 this.posterUrl = posterUrl
                 addQuality(quality)
@@ -145,20 +145,7 @@ class PMovieProvider : MainAPI() {
             app.get(data).document.select("div.movieplay iframe").map { fixUrl(it.attr("data-src")) }
                 .apmap { source ->
                     safeApiCall {
-                        when {
-                            source.startsWith("https://membed.net") -> app.get(
-                                source,
-                                referer = "$mainUrl/"
-                            ).document.select("ul.list-server-items li")
-                                .apmap {
-                                    loadExtractor(
-                                        it.attr("data-video").substringBefore("=https://msubload"),
-                                        "$mainUrl/",
-                                        subtitleCallback,
-                                        callback
-                                    )
-                                }
-                            else -> loadExtractor(source, "$mainUrl/", subtitleCallback, callback)
+                        loadExtractor(source, "$mainUrl/", subtitleCallback, callback)
                         }
                     }
                 }
