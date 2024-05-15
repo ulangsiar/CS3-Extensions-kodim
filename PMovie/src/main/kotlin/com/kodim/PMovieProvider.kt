@@ -1,5 +1,6 @@
 package com.kodim
 
+import android.util.Log
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
@@ -53,9 +54,8 @@ class PMovieProvider : MainAPI() {
                 addSub(episode)
             }
         } else {
-            // output = huruf besar, replace -
-            val quality = this.selectFirst("span.mli-quality").text().replace("-", "").trim().toString()
-            //val quality = getQualityFromString(this.selectFirst("span.mli-quality").text().toString())
+            val quality = this.selectFirst("span.mli-quality").text().trim().replace("-", "")
+            Log.d("DEBUG", quality)            
             newMovieSearchResponse(title, href, TvType.Movie) {
                 this.posterUrl = posterUrl
                 addQuality(quality)
