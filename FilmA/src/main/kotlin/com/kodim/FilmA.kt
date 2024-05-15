@@ -55,7 +55,7 @@ open class FilmA : MainAPI() {
 
     override suspend fun search(query: String): List<SearchResponse> {
         val document = app.get("$mainUrl/search/$query").document
-        return document.select("div.result-item").map {
+        return document.select("div.result-item > article").map {
             val title = it.selectFirst("div.title > a")!!.text().replace("Nonton", "").replace("Film", "").
             replace("Sub Indo", "").replace("Subtitle Indonesia", "").trim()
             val href = it.selectFirst("div.title > a")!!.attr("href")
