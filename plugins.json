@@ -1,0 +1,22 @@
+[
+    {
+        "iconUrl": "https://filmapik.ngo/wp-content/uploads/2021/11/newfa.png",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
+        "fileSize": 13607,
+        "status": 3,
+        "language": "id",
+        "authors": [
+            "kodim"
+        ],
+        "tvTypes": [
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 1,
+        "internalName": "FilmA",
+        "description": "Test",
+        "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/FilmA.cs3",
+        "name": "FilmA"
+    }
+]
