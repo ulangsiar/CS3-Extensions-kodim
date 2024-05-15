@@ -144,11 +144,7 @@ class PMovieProvider : MainAPI() {
         if (data.startsWith(mainUrl)) {
             app.get(data).document.select("div.movieplay iframe").map { fixUrl(it.attr("data-src")) }
                 .apmap { source ->
-                    safeApiCall {
-                        loadExtractor(source, "$mainUrl/", subtitleCallback, callback)
-                        }
-                    }
-                }
+                    safeApiCall { loadExtractor(source, "$mainUrl/", subtitleCallback, callback) }
         } else {
             loadExtractor(data, "$mainUrl/", subtitleCallback, callback)
         }
