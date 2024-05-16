@@ -74,31 +74,25 @@ class Filmapik : MainAPI() {
         val title = document.selectFirst("div.data h1").text().cleanText().trim()
         val poster = document.select("div.poster img").attr("src")
         val tags = document.select("span.sgeneros a").map { it.text() }
+        val year = document.select("div.info-more:nth-child(3) span:nth-child(3) a").text().trim().toIntOrNull()
 
-        // To Be Continue
-        val year = Regex("\\d, (\\d+)").find(
-                document.select("div.content > div:nth-child(7) > h3").text().trim()
-        )?.groupValues?.get(1).toString().toIntOrNull()
-        val tvType = if (document.select("div.serial-wrapper")
-                        .isNotEmpty()
-        ) TvType.TvSeries else TvType.Movie
-        val description = document.select("div.content > blockquote").text().trim()
-        val trailer = document.selectFirst("div.action-player li > a.fancybox")?.attr("href")
-        val rating =
-                document.selectFirst("div.content > div:nth-child(6) > h3")?.text()?.toRatingInt()
-        val actors =
-                document.select("div.col-xs-9.content > div:nth-child(3) > h3 > a").map { it.text() }
+        val description = document.select("div[itemprop=description] p").text().cleanText()
+        val rating = document.selectFirst("span.valor strong")?.text()?.toRatingInt()
+        val actors = document.select("div.info-more:nth-child(2) span:nth-child(3) a").map { it.text() }
 
-        val recommendations = document.select("div.row.item-media").map {
+        val recommendations = document.select("div.srelacionados article").map {
             val recName = it.selectFirst("h3")?.text()?.trim().toString()
-            val recHref = it.selectFirst(".content-media > a")!!.attr("href")
+            val recHref = it.selectFirst("a")!!.attr("href")
             val recPosterUrl =
-                    fixUrl(it.selectFirst(".poster-media > a > img")?.attr("src").toString())
+                    fixUrl(it.selectFirst("img")?.attr("src").toString())
             newTvSeriesSearchResponse(recName, recHref, TvType.TvSeries) {
                 this.posterUrl = recPosterUrl
             }
         }
 
+        val tvType = if(url.contains("/tvshows/")) TvType.TvSeries else TvType.Movie
+
+        //To Be Continue
         return if (tvType == TvType.TvSeries) {
             val episodes = document.select("div.episode-list > a:matches(\\d+)").map {
                 val href = fixUrl(it.attr("href"))
@@ -162,6 +156,7 @@ class Filmapik : MainAPI() {
             .replace("Nonton\\sFilm", "")
             .replace("Sub\\sIndo\\sFilmapik", "")
             .replace("Subtitle\\sIndonesia\\sFilmapik", "")
+            .replace("ALUR\sCERITA\s:\s.\s", "").trim()
     }
 
 }
