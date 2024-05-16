@@ -9,9 +9,6 @@ import android.content.Context
 class FilmapikPlugin: Plugin() {
     override fun load(context: Context) {
         // All providers should be added in this manner. Please don't edit the providers list directly.
-        registerMainAPI(LayarKacaProvider())
-        registerExtractorAPI(Emturbovid())
-        registerExtractorAPI(Furher())
-        registerExtractorAPI(Hownetwork())
+        registerMainAPI(Filmapik())
     }
 }

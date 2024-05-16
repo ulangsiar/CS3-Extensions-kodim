@@ -2,8 +2,7 @@ package com.kodim
 
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
-import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
-import com.lagradost.cloudstream3.extractors.Filesim
+import com.lagradost.cloudstream3.mvvm.safeApiCall
 import com.lagradost.cloudstream3.utils.*
 import org.jsoup.nodes.Element
 
@@ -17,7 +16,6 @@ class Filmapik : MainAPI() {
     override val supportedTypes = setOf( TvType.Movie, TvType.TvSeries )
 
     override val mainPage = mainPageOf(
-        https://tv.filmapik.ngo/latest
             "$mainUrl/category/box-office/page/" to "Box Office",
             "$mainUrl/tvshows/page/" to "Drama Terbaru",
             "$mainUrl/latest/page/" to "Film Terbaru"
@@ -94,9 +92,9 @@ class Filmapik : MainAPI() {
 
         //To Be Continue
         return if (tvType == TvType.TvSeries) {
-            val episodes = document.select("div.episode-list > a:matches(\\d+)").map {
+            val episodes = document.select("div.episodiotitle a:matches(\\d+)").map {
                 val href = fixUrl(it.attr("href"))
-                val episode = it.text().toIntOrNull()
+                val episode = it.text().replace("EP", "").toIntOrNull()
                 val season =
                         it.attr("href").substringAfter("season-").substringBefore("-").toIntOrNull()
                 Episode(
@@ -114,7 +112,6 @@ class Filmapik : MainAPI() {
                 this.rating = rating
                 addActors(actors)
                 this.recommendations = recommendations
-                addTrailer(trailer)
             }
         } else {
             newMovieLoadResponse(title, url, TvType.Movie, url) {
@@ -125,7 +122,6 @@ class Filmapik : MainAPI() {
                 this.rating = rating
                 addActors(actors)
                 this.recommendations = recommendations
-                addTrailer(trailer)
             }
         }
     }
@@ -137,18 +133,13 @@ class Filmapik : MainAPI() {
             callback: (ExtractorLink) -> Unit
     ): Boolean {
 
-        val document = app.get(data).document
-        document.select("ul#loadProviders > li").map {
-            fixUrl(it.select("a").attr("href"))
-        }.apmap {
-            loadExtractor(it.getIframe(), "https://nganunganu.sbs", subtitleCallback, callback)
+        val document = app.get(data+"/play").document
+        document.select("ul[ id=playeroptionsul]").map { it.select("li").attr("data-url") }
+            .apmap { source ->
+                safeApiCall
+                    loadExtractor(source, "$directUrl/", subtitleCallback, callback)
         }
-
         return true
-    }
-
-    private suspend fun String.getIframe() : String {
-        return app.get(this, referer = "$seriesUrl/").document.select("div.embed iframe").attr("src")
     }
 
     private suspend fun String.cleanText(): String {
