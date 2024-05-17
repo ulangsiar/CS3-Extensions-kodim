@@ -50,7 +50,7 @@ class Filmapik : MainAPI() {
                 addSub(episode)
             }
         } else {
-            val quality = getQualityFromString(this.select("span.quality").text().trim())
+            val quality = this.select("span.quality").text().trim().toString()
             newMovieSearchResponse(title, href, TvType.Movie) {
                 this.posterUrl = posterUrl
                 addQuality(quality)
@@ -146,8 +146,7 @@ class Filmapik : MainAPI() {
     }
 
     private fun String.cleanText(): String {
-        return this.replace(Regex("(Nonton)|(Nonton\\sFilm)|(Sub\\sIndo\\sFilmapik)|
-            (Subtitle\\sIndonesia\\sFilmapik)|(ALUR\\sCERITA\\s:\\s.\\s)"), "").trim()
+        return this.replace(Regex("(Nonton)|(Nonton\\sFilm)|(Sub\\sIndo\\sFilmapik)|(Subtitle\\sIndonesia\\sFilmapik)|(ALUR\\sCERITA\\s:\\s.\\s)"), "").trim()
     }
 
 }
