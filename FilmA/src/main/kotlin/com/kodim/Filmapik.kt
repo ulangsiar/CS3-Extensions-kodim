@@ -45,7 +45,7 @@ class Filmapik : MainAPI() {
                 .toString().toIntOrNull()
             //val episode = Regex("Ep.(\\d+)").find(this.select("span.quality")
             //    .text().trim())?.groupValues?.get(1).toString().toIntOrNull()
-            newTvSeriesSearchResponse(title, href, TvType.TvSeries) {
+            newAnimeSearchResponse(title, href, TvType.TvSeries) {
                 this.posterUrl = posterUrl
                 addSub(episode)
             }
