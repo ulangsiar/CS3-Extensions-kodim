@@ -41,7 +41,8 @@ class Filmapik : MainAPI() {
         val posterUrl = this.selectFirst("img")?.attr("src")
         val type = if (this.select(".tvshows") == null) TvType.Movie else TvType.TvSeries
         return if (type == TvType.TvSeries) {
-            val episode = Regex("Ep.(\\d+)").find(this.select("span.quality").text().trim()).toIntOrNull()
+            val episode = Regex("Ep.(\\d+)").find(this.select("span.quality").text().trim())
+                .toString().toIntOrNull()
             //val episode = Regex("Ep.(\\d+)").find(this.select("span.quality")
             //    .text().trim())?.groupValues?.get(1).toString().toIntOrNull()
             newTvSeriesSearchResponse(title, href, TvType.TvSeries) {
@@ -139,7 +140,7 @@ class Filmapik : MainAPI() {
         val document = app.get(data+"/play").document
         document.select("ul[ id=playeroptionsul]").map { it.select("li").attr("data-url") }
             .apmap { source ->
-                    loadExtractor(source, "$directUrl/", subtitleCallback, callback)
+                    loadExtractor(source, "$mainUrl", subtitleCallback, callback)
         }
         return true
     }
