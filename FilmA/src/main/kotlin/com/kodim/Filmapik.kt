@@ -18,17 +18,19 @@ class Filmapik : MainAPI() {
     override val supportedTypes = setOf( TvType.Movie, TvType.TvSeries )
 
     override val mainPage = mainPageOf(
-            "$mainUrl/category/box-office/page/" to "Box Office",
+            "$mainUrl/latest/page/" to "Film Terbaru",        
             "$mainUrl/tvshows/page/" to "Drama Terbaru",
-            "$mainUrl/latest/page/" to "Film Terbaru"
     )
 
     override suspend fun getMainPage( 
         page: Int, 
         request: MainPageRequest 
     ): HomePageResponse {
-        val url = if (page == 1) "$mainUrl/${request.data}/" else "$mainUrl/${request.data}/page/$page/"
-        val document = app.get(url).document
+        val document = if (page == 1) {
+            app.get(request.data.removeSuffix("page/")).document
+        } else {
+            app.get(request.data + page).document
+        }
         val home = document.select("article.tvshows,article.movies").mapNotNull {
             it.toSearchResult()
         }
@@ -36,15 +38,13 @@ class Filmapik : MainAPI() {
     }
 
     private fun Element.toSearchResult(): SearchResponse? {
-        val title = this.selectFirst("h3 a")?.ownText()?.trim() ?: return null
+        val title = this.selectFirst("h3 > a")?.text()?.trim()?
         val href = this.selectFirst("a")!!.attr("href")
         val posterUrl = this.selectFirst("img")?.attr("src")
         val type = if (this.select(".tvshows") == null) TvType.Movie else TvType.TvSeries
         return if (type == TvType.TvSeries) {
             val episode = Regex("Ep.(\\d+)").find(this.select("span.quality").text().trim())
                 .toString().toIntOrNull()
-            //val episode = Regex("Ep.(\\d+)").find(this.select("span.quality")
-            //    .text().trim())?.groupValues?.get(1).toString().toIntOrNull()
             newAnimeSearchResponse(title, href, TvType.TvSeries) {
                 this.posterUrl = posterUrl
                 addSub(episode)
@@ -61,7 +61,7 @@ class Filmapik : MainAPI() {
     override suspend fun search(query: String): List<SearchResponse> {
         val document = app.get("$mainUrl/search.php?s=$query").document
         return document.select("div.search-item").mapNotNull {
-            val title = it.selectFirst("div.title  a").text().cleanText()
+            val title = it.selectFirst("div.title > a").text().cleanText()
             val href = it.selectFirst("a").attr("href")
             val posterUrl = it.selectFirst("img.")?.attr("src")
             newTvSeriesSearchResponse(title, href, TvType.TvSeries) {
