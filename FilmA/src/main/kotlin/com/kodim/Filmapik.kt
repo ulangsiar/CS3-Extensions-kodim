@@ -41,7 +41,7 @@ class Filmapik : MainAPI() {
         val title = this.selectFirst("h3 > a")?.text()?.trim() ?: return null
         val href = this.selectFirst("a")!!.attr("href")
         val posterUrl = this.selectFirst("img")?.attr("src")
-        val type = if (this.select(".tvshows") == null) TvType.Movie else TvType.TvSeries
+        val type = if (this.select(".movies").isNotEmpty()) TvType.Movie else TvType.TvSeries
         return if (type == TvType.TvSeries) {
             val episode = Regex("Ep.(\\d+)").find(this.select("span.quality").text().trim())
                 .toString().toIntOrNull()
@@ -50,7 +50,7 @@ class Filmapik : MainAPI() {
                 addSub(episode)
             }
         } else {
-            val quality = this.select("span.quality").text().trim()
+            val quality = getQualityFromString(this.select("span.quality").text().trim())
             newMovieSearchResponse(title, href, TvType.Movie) {
                 this.posterUrl = posterUrl
                 addQuality(quality)
@@ -59,7 +59,7 @@ class Filmapik : MainAPI() {
     }
 
     override suspend fun search(query: String): List<SearchResponse> {
-        val document = app.get("$mainUrl/search.php?s=$query").document
+        val document = app.get("$mainUrl/?s=$query").document
         return document.select("div.search-item").mapNotNull {
             val title = it.selectFirst("div.title > a").text().cleanText()
             val href = it.selectFirst("a").attr("href")
@@ -145,12 +145,9 @@ class Filmapik : MainAPI() {
         return true
     }
 
-    private suspend fun String.cleanText(): String {
-        return this.replace("Nonton", "")
-            .replace("Nonton\\sFilm", "")
-            .replace("Sub\\sIndo\\sFilmapik", "")
-            .replace("Subtitle\\sIndonesia\\sFilmapik", "")
-            .replace("ALUR\\sCERITA\\s:\\s.\\s", "").trim()
+    private fun String.cleanText(): String {
+        return this.replace(Regex("(Nonton)|(Nonton\\sFilm)|(Sub\\sIndo\\sFilmapik)|
+            (Subtitle\\sIndonesia\\sFilmapik)|(ALUR\\sCERITA\\s:\\s.\\s)"), "").trim()
     }
 
 }
