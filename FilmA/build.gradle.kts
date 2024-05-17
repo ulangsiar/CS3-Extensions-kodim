@@ -7,7 +7,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
     language = "id"
     // description = "Nonton Film Online... Bioskop Online Terlengkap"
-    description = "Test"
+    description = "Test2"
     authors = listOf("kodim")
 
     /**

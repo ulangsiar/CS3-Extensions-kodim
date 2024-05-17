@@ -9,7 +9,7 @@ import org.jsoup.nodes.Element
 
 class Filmapik : MainAPI() {
 
-    override var mainUrl = "https://tv.filmapik.ngo/"
+    override var mainUrl = "https://tv.filmapik.ngo"
     override var name = "Filmapik"
     override val hasMainPage = true    
     override var lang = "id"
@@ -31,7 +31,7 @@ class Filmapik : MainAPI() {
         } else {
             app.get(request.data + page).document
         }
-        val home = document.select("article.tvshows,article.movies").mapNotNull {
+        val home = document.select("article.item movies, article.item tvshows").mapNotNull {
             it.toSearchResult()
         }
         return newHomePageResponse(request.name, home)
