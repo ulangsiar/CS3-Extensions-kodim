@@ -1,0 +1,8 @@
+{
+    "name": "Kodim Plugins",
+    "description": "Malay Extensions",
+    "manifestVersion": 1,
+    "pluginLists": [
+        "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/plugins.json"
+    ]
+}
