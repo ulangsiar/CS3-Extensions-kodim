@@ -41,7 +41,7 @@ class Filmapik : MainAPI() {
         val title = this.selectFirst("h3 > a")?.text()?.trim() ?: return null
         val href = this.selectFirst("a")!!.attr("href")
         val posterUrl = this.selectFirst("img")?.attr("src")
-        val type = if (this.select(".tvshows") == null) TvType.Movie else TvType.TvSeries
+        val type = if (this.select(".item movies") == null) TvType.Movie else TvType.TvSeries
         return if (type == TvType.TvSeries) {
             val episode = Regex("Ep.(\\d+)").find(this.select("span.quality").text().trim())
                 .toString().toIntOrNull()
