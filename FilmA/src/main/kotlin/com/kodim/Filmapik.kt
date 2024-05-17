@@ -38,7 +38,7 @@ class Filmapik : MainAPI() {
     }
 
     private fun Element.toSearchResult(): SearchResponse? {
-        val title = this.selectFirst("h3 > a")?.text()?.trim()?.toString()
+        val title = this.selectFirst("h3 > a")?.text()?.trim() ?: return null
         val href = this.selectFirst("a")!!.attr("href")
         val posterUrl = this.selectFirst("img")?.attr("src")
         val type = if (this.select(".tvshows") == null) TvType.Movie else TvType.TvSeries
