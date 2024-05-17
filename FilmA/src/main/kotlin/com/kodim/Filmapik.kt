@@ -2,17 +2,20 @@ package com.kodim
 
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
+import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 import com.lagradost.cloudstream3.mvvm.safeApiCall
-import com.lagradost.cloudstream3.utils.*
+import com.lagradost.cloudstream3.utils.ExtractorLink
+import com.lagradost.cloudstream3.utils.loadExtractor
 import org.jsoup.nodes.Element
 
 class Filmapik : MainAPI() {
 
     override var mainUrl = "https://tv.filmapik.ngo/"
-
     override var name = "Filmapik"
-    override val hasMainPage = true
+    override val hasMainPage = true    
     override var lang = "id"
+    override val hasQuickSearch = false
+    override val hasDownloadSupport = true    
     override val supportedTypes = setOf( TvType.Movie, TvType.TvSeries )
 
     override val mainPage = mainPageOf(
@@ -21,7 +24,10 @@ class Filmapik : MainAPI() {
             "$mainUrl/latest/page/" to "Film Terbaru"
     )
 
-    override suspend fun getMainPage( page: Int, request: MainPageRequest ): HomePageResponse {
+    override suspend fun getMainPage( 
+        page: Int, 
+        request: MainPageRequest 
+    ): HomePageResponse {
         val document =  = if (page == 1) {
             app.get(request.data.removeSuffix("page/")).document
         } else {
