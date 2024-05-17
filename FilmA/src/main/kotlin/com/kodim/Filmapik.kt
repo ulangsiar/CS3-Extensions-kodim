@@ -27,11 +27,8 @@ class Filmapik : MainAPI() {
         page: Int, 
         request: MainPageRequest 
     ): HomePageResponse {
-        val document = if (page == 1) {
-            app.get(request.data.removeSuffix("page/")).document
-        } else {
-            app.get(request.data + page).document
-        }
+        val url = if (page == 1) "$mainUrl/${request.data}/" else "$mainUrl/${request.data}/page/$page/"
+        val document = app.get(url).document
         val home = document.select("article.tvshows,article.movies").mapNotNull {
             it.toSearchResult()
         }
@@ -39,19 +36,20 @@ class Filmapik : MainAPI() {
     }
 
     private fun Element.toSearchResult(): SearchResponse? {
-        val title = this.selectFirst("h3")?.ownText()?.trim() ?: return null
+        val title = this.selectFirst("h3 a")?.ownText()?.trim() ?: return null
         val href = this.selectFirst("a")!!.attr("href")
         val posterUrl = this.selectFirst("img")?.attr("src")
-        val type = if (this.select(".movies") == null) TvType.Movie else TvType.TvSeries
+        val type = if (this.select(".tvshows") == null) TvType.Movie else TvType.TvSeries
         return if (type == TvType.TvSeries) {
-            val episode = Regex("Ep.(\\d+)").find(this.select("span.quality")
-                .text().trim())?.groupValues?.get(1).toString().toIntOrNull()
+            val episode = Regex("Ep.(\\d+)").find(this.select("span.quality").text().trim()).toIntOrNull()
+            //val episode = Regex("Ep.(\\d+)").find(this.select("span.quality")
+            //    .text().trim())?.groupValues?.get(1).toString().toIntOrNull()
             newTvSeriesSearchResponse(title, href, TvType.TvSeries) {
                 this.posterUrl = posterUrl
                 addSub(episode)
             }
         } else {
-            val quality = this.select("div.quality").text().trim()
+            val quality = this.select("span.quality").text().trim()
             newMovieSearchResponse(title, href, TvType.Movie) {
                 this.posterUrl = posterUrl
                 addQuality(quality)
