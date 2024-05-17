@@ -3,7 +3,6 @@ package com.kodim
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
-import com.lagradost.cloudstream3.mvvm.safeApiCall
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 import org.jsoup.nodes.Element
@@ -45,7 +44,7 @@ class Filmapik : MainAPI() {
         val posterUrl = this.selectFirst("img")?.attr("src")
         val type = if (this.select(".movies") == null) TvType.Movie else TvType.TvSeries
         return if (type == TvType.TvSeries) {
-            val episode = Regex("Ep.(\\d+)").find(document.select("span.quality")
+            val episode = Regex("Ep.(\\d+)").find(this.select("span.quality")
                 .text().trim())?.groupValues?.get(1).toString().toIntOrNull()
             newTvSeriesSearchResponse(title, href, TvType.TvSeries) {
                 this.posterUrl = posterUrl
@@ -65,7 +64,7 @@ class Filmapik : MainAPI() {
         return document.select("div.search-item").mapNotNull {
             val title = it.selectFirst("div.title  a").text().cleanText()
             val href = it.selectFirst("a").attr("href")
-            val posterUrl = it.selectFirst("img.")?.attr("src"))
+            val posterUrl = it.selectFirst("img.")?.attr("src")
             newTvSeriesSearchResponse(title, href, TvType.TvSeries) {
                 this.posterUrl = posterUrl
             }
@@ -142,7 +141,6 @@ class Filmapik : MainAPI() {
         val document = app.get(data+"/play").document
         document.select("ul[ id=playeroptionsul]").map { it.select("li").attr("data-url") }
             .apmap { source ->
-                safeApiCall
                     loadExtractor(source, "$directUrl/", subtitleCallback, callback)
         }
         return true
@@ -153,7 +151,7 @@ class Filmapik : MainAPI() {
             .replace("Nonton\\sFilm", "")
             .replace("Sub\\sIndo\\sFilmapik", "")
             .replace("Subtitle\\sIndonesia\\sFilmapik", "")
-            .replace("ALUR\sCERITA\s:\s.\s", "").trim()
+            .replace("ALUR\\sCERITA\\s:\\s.\\s", "").trim()
     }
 
 }
