@@ -2,9 +2,6 @@ package com.kodim
 
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
-import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
-import com.lagradost.cloudstream3.utils.ExtractorLink
-import com.lagradost.cloudstream3.utils.loadExtractor
 import org.jsoup.nodes.Element
 
 class Filmapik : MainAPI() {
@@ -43,8 +40,7 @@ class Filmapik : MainAPI() {
         val posterUrl = this.selectFirst("img")?.attr("src")
         val type = if (this.select(".movies").isNotEmpty()) TvType.Movie else TvType.TvSeries
         return if (type == TvType.TvSeries) {
-            val episode = Regex("Ep.(\\d+)").find(this.select("span.quality").text().trim())
-                .toString().toIntOrNull()
+            val episode = Regex("Ep.(\\d+)").find(this.select("span.quality").text().trim().toIntOrNull())
             newAnimeSearchResponse(title, href, TvType.TvSeries) {
                 this.posterUrl = posterUrl
                 addSub(episode)
@@ -60,7 +56,7 @@ class Filmapik : MainAPI() {
 
     override suspend fun search(query: String): List<SearchResponse> {
         val document = app.get("$mainUrl/?s=$query").document
-        return document.select("div.search-item").mapNotNull {
+        return document.select("div.result-item").mapNotNull {
             val title = it.selectFirst("div.title > a").text().cleanText()
             val href = it.selectFirst("a").attr("href")
             val posterUrl = it.selectFirst("img.")?.attr("src")
@@ -146,7 +142,7 @@ class Filmapik : MainAPI() {
     }
 
     private fun String.cleanText(): String {
-        return this.replace(Regex("(Nonton)|(Nonton\\sFilm)|(Sub\\sIndo\\sFilmapik)|(Subtitle\\sIndonesia\\sFilmapik)|(ALUR\\sCERITA\\s:\\s.\\s)"), "").trim()
+        return this.replace(Regex("(Nonton)|(Film)|(Sub\\sIndo\\sFilmapik)|(Subtitle\\sIndonesia\\sFilmapik)|(ALUR\\sCERITA\\s:\\s.\\s)"), "").trim()
     }
 
 }
