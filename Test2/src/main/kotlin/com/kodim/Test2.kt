@@ -4,10 +4,10 @@ import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import org.jsoup.nodes.Element
 
-class Filmapik : MainAPI() {
+class Test2 : MainAPI() {
 
-    override var mainUrl = "https://tv.filmapik.ngo"
-    override var name = "Filmapik"
+    override var mainUrl = base64Decode("aHR0cHM6Ly90di5maWxtYXBpay5uZ28=")
+    override var name = "Test2Provider"
     override val hasMainPage = true    
     override var lang = "id"
     override val hasQuickSearch = false

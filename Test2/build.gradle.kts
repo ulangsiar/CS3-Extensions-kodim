@@ -5,7 +5,6 @@ version = 4
 cloudstream {
     // All of these properties are optional, you can safely remove them
     language = "id"
-    // description = "Nonton Film Online... Bioskop Online Terlengkap"
     description = "Test for Coding"
     authors = listOf("kodim")
 
@@ -20,6 +19,6 @@ cloudstream {
 
     tvTypes = listOf("TvSeries","Movie")
 
-    iconUrl = "https://filmapik.ngo/wp-content/uploads/2021/11/newfa.png"
+    iconUrl = "https://play-lh.googleusercontent.com/gkHbWlq1b81AiLJhh9n8UxocV3JFdCKU079oq4GpTX1ytLJQIY_NxmLRHn60PaCgkErh=w240-h480-rw"
 }
 
