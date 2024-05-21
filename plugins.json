@@ -33,7 +33,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 1,
+        "version": 2,
         "internalName": "TestServer",
         "description": "Test Server Stream",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/TestServer.cs3",
