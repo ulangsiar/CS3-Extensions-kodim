@@ -23,7 +23,7 @@
         "iconUrl": "https://play-lh.googleusercontent.com/gkHbWlq1b81AiLJhh9n8UxocV3JFdCKU079oq4GpTX1ytLJQIY_NxmLRHn60PaCgkErh=w240-h480-rw",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
-        "fileSize": 13010,
+        "fileSize": 13018,
         "status": 3,
         "language": "ms",
         "authors": [
@@ -33,9 +33,9 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 4,
+        "version": 5,
         "internalName": "TestServer",
-        "description": "Test Server Stream ver 4",
+        "description": "Test Server Stream ver 5",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/TestServer.cs3",
         "name": "TestServer"
     }
