@@ -38,5 +38,27 @@
         "description": "Test Server Stream ver 13",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/TestServer.cs3",
         "name": "TestServer"
-    }
+    },
+    {
+        "iconUrl": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://idlixian.com&size=16",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
+        "fileSize": 25168,
+        "status": 1,
+        "language": "id",
+        "authors": [
+            "kodim"
+        ],
+        "tvTypes": [
+            "TvSeries",
+            "Movie",
+            "Anime",
+            "AsianDrama"
+        ],
+        "version": 1,
+        "internalName": "Eedeeleex",
+        "description": "Situs penyedia layanan streaming film dan serial tv gratis",
+        "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/Eedeeleex.cs3",
+        "name": "Eedeeleex"
+    }    
 ]
