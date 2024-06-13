@@ -60,25 +60,5 @@
         "description": "Situs penyedia layanan streaming film dan serial tv gratis",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/Eedeeleex.cs3",
         "name": "Eedeeleex"
-    },
-    {
-        "iconUrl": "https://www.google.com/s2/favicons?domain=https://ww79.pencurimovie.autos/&sz=%size%",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
-        "fileSize": 15039,
-        "status": 3,
-        "language": "ms",
-        "authors": [
-            "kodim"
-        ],
-        "tvTypes": [
-            "TvSeries",
-            "Movie"
-        ],
-        "version": 1,
-        "internalName": "PMovie",
-        "description": "PenCURI Official Website - Free Movie Download and Stream",
-        "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/PMovie.cs3",
-        "name": "PMovie"
     }    
 ]
