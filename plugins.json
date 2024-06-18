@@ -43,7 +43,7 @@
         "iconUrl": "https://www.google.com/s2/favicons?domain=https://ww79.pencurimovie.autos/&sz=%size%",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
-        "fileSize": 14582,
+        "fileSize": 14406,
         "status": 3,
         "language": "ms",
         "authors": [
@@ -53,9 +53,9 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 2,
+        "version": 3,
         "internalName": "PMovie",
-        "description": "PENCURIMOVIE Official Website - Free Movie Download and Stream",
+        "description": "Bypass Cloudflare/DDOS protection error",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/PMovie.cs3",
         "name": "PMovie"
     }    
