@@ -58,5 +58,27 @@
         "description": "Bypass Cloudflare/DDOS protection error",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/PMovie.cs3",
         "name": "PMovie"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=loklok.com&sz=%size%",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
+        "fileSize": 33279,
+        "status": 3,
+        "language": "en",
+        "authors": [
+            "kodim"
+        ],
+        "tvTypes": [
+            "AsianDrama",
+            "Anime",
+            "TvSeries",
+            "Movie"
+        ],
+        "version": 26,
+        "internalName": "Loklok",
+        "description": "#2 best extension based on Loklok API",
+        "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/Loklok.cs3",
+        "name": "Loklok"
     }    
 ]
