@@ -1,0 +1,8 @@
+{
+    "name": "StormUnblessed",
+    "description": "MultiProvider Extensions",
+    "manifestVersion": 1,
+    "pluginLists": [
+        "https://raw.githubusercontent.com/Stormunblessed/storm-ext/builds/plugins.json"
+    ]
+}
