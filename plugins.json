@@ -1,9 +1,9 @@
 [
     {
-        "iconUrl": "https://filmapik.ngo/wp-content/uploads/2021/11/newfa.png",
+        "iconUrl": "https://play-lh.googleusercontent.com/gkHbWlq1b81AiLJhh9n8UxocV3JFdCKU079oq4GpTX1ytLJQIY_NxmLRHn60PaCgkErh=w240-h480-rw",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
-        "fileSize": 12812,
+        "fileSize": 15884,
         "status": 3,
         "language": "id",
         "authors": [
@@ -13,11 +13,11 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 4,
-        "internalName": "FilmA",
-        "description": "Test for Coding",
-        "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/FilmA.cs3",
-        "name": "FilmA"
+        "version": 14,
+        "internalName": "FilmApik",
+        "description": "Nonton Film Online - Bioskop Online Terlengkap - Test Server Efek",
+        "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/FilmApik.cs3",
+        "name": "FilmApik"
     },
     {
         "iconUrl": "https://play-lh.googleusercontent.com/gkHbWlq1b81AiLJhh9n8UxocV3JFdCKU079oq4GpTX1ytLJQIY_NxmLRHn60PaCgkErh=w240-h480-rw",
