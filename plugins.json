@@ -40,10 +40,10 @@
         "name": "TestServer"
     },
     {
-        "iconUrl": "https://www.google.com/s2/favicons?domain=https://ww79.pencurimovie.autos/&sz=%size%",
+        "iconUrl": "https://imgur.com/a/2potADS",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
-        "fileSize": 14406,
+        "fileSize": 13192,
         "status": 3,
         "language": "ms",
         "authors": [
@@ -53,7 +53,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 6,
+        "version": 3,
         "internalName": "PMovie",
         "description": "PMovie Official Website - Free Movie Download and Stream",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/PMovie.cs3",
