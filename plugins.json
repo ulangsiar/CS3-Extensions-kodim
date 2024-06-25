@@ -1,25 +1,5 @@
 [
     {
-        "iconUrl": "https://play-lh.googleusercontent.com/gkHbWlq1b81AiLJhh9n8UxocV3JFdCKU079oq4GpTX1ytLJQIY_NxmLRHn60PaCgkErh=w240-h480-rw",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
-        "fileSize": 15884,
-        "status": 3,
-        "language": "id",
-        "authors": [
-            "kodim"
-        ],
-        "tvTypes": [
-            "TvSeries",
-            "Movie"
-        ],
-        "version": 15,
-        "internalName": "FilmApik",
-        "description": "Nonton Film Online - Bioskop Online Terlengkap - Test Server Efek",
-        "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/FilmApik.cs3",
-        "name": "FilmApik"
-    },
-    {
         "iconUrl": "https://imgur.com/a/2potADS",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
