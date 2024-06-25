@@ -53,9 +53,9 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 3,
+        "version": 6,
         "internalName": "PMovie",
-        "description": "Bypass Cloudflare/DDOS protection error",
+        "description": "PMovie Official Website - Free Movie Download and Stream",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/PMovie.cs3",
         "name": "PMovie"
     }    
