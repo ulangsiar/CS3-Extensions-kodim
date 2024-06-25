@@ -33,7 +33,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 3,
+        "version": 5,
         "internalName": "PMovie",
         "description": "PMovie Official Website - Free Movie Download and Stream",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/PMovie.cs3",
