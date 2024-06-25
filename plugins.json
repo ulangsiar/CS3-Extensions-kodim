@@ -20,26 +20,6 @@
         "name": "FilmApik"
     },
     {
-        "iconUrl": "https://play-lh.googleusercontent.com/gkHbWlq1b81AiLJhh9n8UxocV3JFdCKU079oq4GpTX1ytLJQIY_NxmLRHn60PaCgkErh=w240-h480-rw",
-        "apiVersion": 1,
-        "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
-        "fileSize": 13069,
-        "status": 3,
-        "language": "ms",
-        "authors": [
-            "kodim"
-        ],
-        "tvTypes": [
-            "TvSeries",
-            "Movie"
-        ],
-        "version": 13,
-        "internalName": "TestServer",
-        "description": "Test Server Stream ver 13",
-        "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/TestServer.cs3",
-        "name": "TestServer"
-    },
-    {
         "iconUrl": "https://imgur.com/a/2potADS",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
