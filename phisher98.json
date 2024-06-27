@@ -1,0 +1,8 @@
+{
+    "name": "phisher98",
+    "description": "HindiProvider Extensions",
+    "manifestVersion": 1,
+    "pluginLists": [
+        "https://raw.githubusercontent.com/phisher98/HindiProviders/builds/plugins.json"
+    ]
+}
