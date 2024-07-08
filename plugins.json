@@ -3,7 +3,7 @@
         "iconUrl": "https://imgur.com/a/2potADS",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/ulangsiar/CS3-Extensions-kodim",
-        "fileSize": 13192,
+        "fileSize": 13568,
         "status": 1,
         "language": "ms",
         "authors": [
@@ -13,7 +13,7 @@
             "TvSeries",
             "Movie"
         ],
-        "version": 5,
+        "version": 6,
         "internalName": "PMovie",
         "description": "PMovie Official Website - Free Movie Download and Stream",
         "url": "https://raw.githubusercontent.com/ulangsiar/CS3-Extensions-kodim/builds/PMovie.cs3",
